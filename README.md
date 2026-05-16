@@ -139,54 +139,10 @@ The KNN classifier achieved the highest accuracy and was selected for deployment
 
 ---
 
-## 🖼️ Application Screenshots
-
-Screenshots and EDA plots are available in the `plots/` directory. Key visuals include:
-
-| Plot | File |
-|------|------|
-| Age Distribution | `plots/age_distribution.png` |
-| Target Class Distribution | `plots/target_distribution.png` |
-| Correlation Heatmap | `plots/correlation_heatmap.png` |
-| Boxplots (outlier detection) | `plots/boxplots.png` |
-| Mutual Information Scores | `plots/mutual_information.png` |
-| Chi-Square Feature Scores | `plots/chi_square.png` |
-| KNN Decision Boundary | `plots/decision_boundary_knn.png` |
-| Logistic Regression Boundary | `plots/decision_boundary_lr.png` |
 
 ---
 
-## 🛠️ Setup & Running Locally
 
-### Prerequisites
-- Python 3.9+
-- pip
-
-### Installation
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/nihalabiomed/Heart-disease-prediction.git
-cd Heart-disease-prediction
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Launch the Streamlit app
-streamlit run app.py
-```
-
-The app will open at `http://localhost:8501` in your browser.
-
-### Dependencies (`requirements.txt`)
-```
-pandas
-streamlit
-joblib
-scikit-learn
-```
-
----
 
 ## 📁 Project Structure
 
@@ -222,15 +178,3 @@ Heart-disease-prediction/
 
 ---
 
-## 🔗 Links
-
-- 🌐 **Live Deployment:** [Streamlit App](https://nihalabiomed-heart-disease-prediction-app-vnrlqu.streamlit.app)
-- 📓 **Dataset Source:** [UCI ML Repository — Cleveland Heart Disease](https://archive.ics.uci.edu/ml/datasets/Heart+Disease)
-
----
-
-## 📄 Reference
-
-> Heart Disease Prediction Using Patient Health Data — Full ML Life Cycle Project  
-> Predictive Analytics Course | Academic Year 2025–26  
-> Contributors: Anagha (Stages 1–4) · Hiba Fathima (Stages 5–8) · Asna Abbas (Stages 9–10)
