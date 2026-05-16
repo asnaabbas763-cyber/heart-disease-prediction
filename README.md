@@ -81,27 +81,27 @@ Enter patient parameters in the interactive sidebar and get a real-time cardiac 
 
 ## 🔬 ML Pipeline — Full Life Cycle
 
-### 🔹 Stage 1 — Problem Definition &nbsp;*(Anagha Suresh)*
+### 🔹 Stage 1 — Problem Definition &nbsp;
 Framed the problem as a **binary classification** task. Defined success metrics (accuracy, precision, recall, F1-score), identified the clinical domain context, and reviewed existing literature on ML-based cardiac risk prediction.
 
-### 🔹 Stage 2 — Data Collection & Understanding &nbsp;*(Anagha Suresh)*
+### 🔹 Stage 2 — Data Collection & Understanding &nbsp;
 Sourced the Cleveland Heart Disease Dataset (303 records, 14 columns). Conducted initial profiling: data types, null counts, statistical summaries, and preliminary class balance checks.
 
-### 🔹 Stage 3 — Data Preprocessing & Cleaning &nbsp;*(Anagha Suresh)*
+### 🔹 Stage 3 — Data Preprocessing & Cleaning &nbsp;
 - Verified and handled missing or erroneous values
 - Standardised numerical features using `StandardScaler`
 - Encoded categorical variables appropriately
 - Performed **80/20 stratified train/test split**
 - Persisted processed splits as `.pkl` files under `data/`
 
-### 🔹 Stage 4 — Exploratory Data Analysis &nbsp;*(Anagha Suresh)*
+### 🔹 Stage 4 — Exploratory Data Analysis &nbsp;
 Conducted across `EDA.ipynb` and `EDA_cleaned.ipynb`:
 - Age and target class distribution
 - Correlation heatmap across all 13 features
 - Boxplots for outlier detection in numerical variables
 - Gender and chest-pain-type breakdowns
 
-### 🔹 Stage 5 — Feature Engineering & Selection &nbsp;*(Hiba Fathima M)*
+### 🔹 Stage 5 — Feature Engineering & Selection &nbsp;
 Applied two statistical methods to identify the most clinically significant features:
 
 | Method | Purpose |
@@ -118,7 +118,7 @@ Applied two statistical methods to identify the most clinically significant feat
 | 3 | `ca` | Number of Major Vessels (fluoroscopy) |
 | 4 | `thal` | Thalassemia / Blood Flow Classification |
 
-### 🔹 Stage 6 — Model Building & Training &nbsp;*(Hiba Fathima M)*
+### 🔹 Stage 6 — Model Building & Training &nbsp;
 Three models were trained and compared on the cleaned, scaled dataset:
 
 | Model | Approach |
@@ -127,7 +127,7 @@ Three models were trained and compared on the cleaned, scaled dataset:
 | **Logistic Regression** | L2 regularisation |
 | **Gradient Boosting** | Ensemble tree-based method |
 
-### 🔹 Stage 7 — Model Evaluation & Comparison &nbsp;*(Hiba Fathima M)*
+### 🔹 Stage 7 — Model Evaluation & Comparison &nbsp;
 
 | Model | Accuracy | Precision | Recall | F1-Score |
 |-------|----------|-----------|--------|----------|
@@ -137,18 +137,18 @@ Three models were trained and compared on the cleaned, scaled dataset:
 
 > KNN was selected as the **production model** based on highest accuracy. Confusion matrices and decision boundary plots are available in `plots/`.
 
-### 🔹 Stage 8 — Model Interpretation & Explainability &nbsp;*(Hiba Fathima M)*
+### 🔹 Stage 8 — Model Interpretation & Explainability &nbsp;
 - Decision boundary plots generated for KNN and Logistic Regression
 - Feature importance visualised via Mutual Information and Chi-Square scores
 - Findings documented to ensure **clinical transparency** of predictions
 
-### 🔹 Stage 9 — Deployment &nbsp;*(Asna Abbas)*
+### 🔹 Stage 9 — Deployment &nbsp;
 The KNN model (`heart_model.pkl`) and scaler (`scaler.pkl`) were serialised with `joblib` and deployed via **Streamlit**:
 - Interactive sidebar for entering all 13 patient parameters
 - Real-time prediction with risk classification output
 - Clinical cyberpunk UI theme with animated feedback
 
-### 🔹 Stage 10 — Documentation &nbsp;*(Asna Abbas)*
+### 🔹 Stage 10 — Documentation &nbsp;
 - Maintained structured Jupyter notebooks for all pipeline stages
 - Authored this README and project PPT
 - Organised GitHub repository with branches: `main`, `feature/eda`, `feature/feature-selection`, `ml-models`
@@ -159,7 +159,7 @@ The KNN model (`heart_model.pkl`) and scaler (`scaler.pkl`) were serialised with
 
 | Metric | 🏆 KNN (Production) | Logistic Regression | Gradient Boosting |
 |--------|---------------------|--------------------|--------------------|
-| **Accuracy** | **90.16%** | 85.25% | 77.05% |
+| **Accuracy** | **82%** | 80.33% | 81.97% |
 | **Features Used** | cp, thalach, ca, thal | cp, thalach, ca, thal | cp, thalach, ca, thal |
 | **Deployed** | ✅ Live | ❌ | ❌ |
 
