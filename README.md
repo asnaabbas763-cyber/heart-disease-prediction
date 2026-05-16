@@ -37,7 +37,7 @@ This project builds a **binary ML classifier** that predicts whether a patient h
 
 ## 🚀 Live Demo
 
-> 🔗 **[heart-disease-prediction.streamlit.app](https://heart-disease-prediction-3ycj5odppblq8pchewpxv4.streamlit.app/)**
+> 🔗 **https://heart-disease-prediction-3ycj5odppblq8pchewpxv4.streamlit.app/**
 
 Enter patient parameters in the interactive sidebar and get a real-time cardiac risk prediction.
 
@@ -131,9 +131,9 @@ Three models were trained and compared on the cleaned, scaled dataset:
 
 | Model | Accuracy | Precision | Recall | F1-Score |
 |-------|----------|-----------|--------|----------|
-| 🏆 **KNN** | **90.16%** | — | — | — |
-| Logistic Regression | 85.25% | — | — | — |
-| Gradient Boosting | 77.05% | — | — | — |
+| 🏆 **KNN** | **81.97%** | 77.50 | 93.94 | 84.93 |
+| Logistic Regression | 80.33% | 76.92 | 90.91 | 83.33 |
+| Gradient Boosting | 81.91% | 78.95 | 90.91 | 84.51 |
 
 > KNN was selected as the **production model** based on highest accuracy. Confusion matrices and decision boundary plots are available in `plots/`.
 
@@ -231,15 +231,4 @@ seaborn
 
 ---
 
-## 📜 License & Credits
 
-This project is an academic coursework submission for the **Predictive Analytics** course (2025–26).  
-Dataset: [UCI Machine Learning Repository — Heart Disease Dataset](https://archive.ics.uci.edu/ml/datasets/Heart+Disease)
-
----
-
-<div align="center">
-
-Made with ❤️ by **Anagha Suresh**, **Hiba Fathima M**, and **Asna Abbas**
-
-</div>
