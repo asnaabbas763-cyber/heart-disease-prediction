@@ -112,7 +112,7 @@ Evaluation used accuracy, precision, recall, F1-score, and confusion matrix. Dec
 - Feature importance interpreted through Mutual Information (`plots/mutual_information.png`) and Chi-Square scores (`plots/chi_square.png`)
 - Findings documented to ensure clinical transparency of predictions
 
-### Stage 9 — Deployment *(Asna Abbas)*
+### Stage 9 — Deployment 
 The final KNN model (`heart_model.pkl`) and scaler (`scaler.pkl`) were serialised with `joblib` and deployed via **Streamlit**:
 - Interactive sidebar for entering all 13 patient parameters
 - Real-time prediction with risk classification
