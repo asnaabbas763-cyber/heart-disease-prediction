@@ -99,8 +99,6 @@ hr { border-color: rgba(52,211,153,0.15) !important; }
 
 # ─────────────────────────────────────────────
 # 3. LOAD MODEL ASSETS
-#    Stage 5 saved: models/scaler.pkl, models/top_features.pkl
-#    Stage 7 saved: models/best_model.pkl  (best of KNN / LR / GB)
 # ─────────────────────────────────────────────
 @st.cache_resource
 def load_assets():
@@ -108,6 +106,9 @@ def load_assets():
     scaler       = joblib.load('models/scaler.pkl')
     top_features = joblib.load('models/top_features.pkl')
     return model, scaler, top_features
+
+ALL_FEATURES = ['age', 'sex', 'cp', 'trestbps', 'chol', 'fbs',
+                'restecg', 'thalach', 'exang', 'oldpeak', 'slope', 'ca', 'thal']
 
 try:
     model, scaler, TOP_FEATURES = load_assets()
@@ -118,15 +119,22 @@ try:
         'GradientBoostingClassifier' : 'Gradient Boosting'
     }
     model_label = model_labels.get(type(model).__name__, type(model).__name__)
+
+    # ── Auto-detect how many features the model expects ──────────────────────
+    try:
+        n_features_model = model.n_features_in_
+    except AttributeError:
+        n_features_model = len(ALL_FEATURES)   # fallback: assume 13
+
 except FileNotFoundError as e:
     st.error(f"⚠️ Asset not found: {e}  |  Run Stage 5–7 notebooks to generate models/.")
-    model_loaded = False
-    TOP_FEATURES = ['cp', 'thalach', 'ca', 'thal', 'oldpeak', 'exang', 'slope', 'restecg']
-    model_label  = 'N/A'
+    model_loaded    = False
+    TOP_FEATURES    = ['cp', 'thalach', 'ca', 'thal', 'oldpeak', 'exang', 'slope', 'restecg']
+    model_label     = 'N/A'
+    n_features_model = 13
 
 # ─────────────────────────────────────────────
 # 4. SIDEBAR — PATIENT INPUTS
-#    All 13 features collected; scaler applied to all 13; only Top-8 fed to model.
 # ─────────────────────────────────────────────
 with st.sidebar:
     st.markdown("""
@@ -262,20 +270,27 @@ with left:
         with st.spinner("⚙️ Running diagnostic inference pipeline..."):
             time.sleep(1.2)
 
-        # Full 13-feature row in training order
-        ALL_FEATURES = ['age', 'sex', 'cp', 'trestbps', 'chol', 'fbs',
-                        'restecg', 'thalach', 'exang', 'oldpeak', 'slope', 'ca', 'thal']
-        raw_all    = pd.DataFrame(
+        # ── Build full 13-feature row ─────────────────────────────────────
+        raw_all = pd.DataFrame(
             [[age, sex_val, cp, trestbps, chol, fbs,
               restecg, thalach, exang, oldpeak, slope, ca, thal]],
             columns=ALL_FEATURES
         )
+
         scaled_all = scaler.transform(raw_all)
         scaled_df  = pd.DataFrame(scaled_all, columns=ALL_FEATURES)
 
-        # Feed only Top-8 to model
-        model_input = scaled_df[TOP_FEATURES].values
-        prediction  = model.predict(model_input)
+        # ── Feed the right number of features to the model ───────────────
+        # If the saved model was trained on all 13 → pass all 13.
+        # If it was trained on only the top-8 → pass top-8.
+        if n_features_model == len(TOP_FEATURES):
+            model_input = scaled_df[TOP_FEATURES].values
+            used_label  = f"Top-{len(TOP_FEATURES)} features"
+        else:
+            model_input = scaled_df[ALL_FEATURES].values
+            used_label  = "All 13 features"
+
+        prediction = model.predict(model_input)
 
         try:
             prob      = model.predict_proba(model_input)[0]
@@ -326,18 +341,19 @@ with left:
                 '></div>"""
             st.markdown(pulses, unsafe_allow_html=True)
 
-        # Top-8 feature input table
-        st.markdown("#### 📌 Model Input — Top-8 Features")
+        # ── Feature input table (always shows Top-8 for interpretability) ─
+        st.markdown(f"#### 📌 Model Input — Top-8 Features  *(model used: {used_label})*")
         top8_display = pd.DataFrame({
-            "Feature": TOP_FEATURES,
-            "Raw Value": [raw_all[f].values[0] for f in TOP_FEATURES],
-            "Scaled Value": [round(scaled_df[f].values[0], 4) for f in TOP_FEATURES]
+            "Feature"     : TOP_FEATURES,
+            "Raw Value"   : [raw_all[f].values[0]              for f in TOP_FEATURES],
+            "Scaled Value": [round(scaled_df[f].values[0], 4)  for f in TOP_FEATURES]
         })
         st.dataframe(top8_display, use_container_width=True, hide_index=True)
         st.markdown(
             "<p style='font-size:11px; color:#2d6645;'>"
             "* Features selected via combined Mutual Information + Chi-Square ranking (Stage 5). "
-            "All 13 inputs are standardised; only these 8 are passed to the model.</p>",
+            "All 13 inputs are standardised; the model automatically receives the correct "
+            "number of features based on how it was saved.</p>",
             unsafe_allow_html=True
         )
 
