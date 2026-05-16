@@ -156,10 +156,14 @@ The KNN model (`heart_model.pkl`) and scaler (`scaler.pkl`) were serialised with
 ---
 # App Screenshots
 
-<img src="Assets/app%20screenshot1.jpeg" width="250">
-<img src="Assets/app%20screenshot2.jpeg" width="250">
-<img src="Assets/app%20screenshot3.jpeg" width="250">
+## Screenshot 1
+![Screenshot 1](Assets/app%20screenshot1.jpeg)
 
+## Screenshot 2
+![Screenshot 2](Assets/app%20screenshot2.jpeg)
+
+## Screenshot 3
+![Screenshot 3](Assets/app%20screenshot3.jpeg)
 ## 📊 Results Summary
 
 | Metric | 🏆 KNN (Production) | Logistic Regression | Gradient Boosting |
