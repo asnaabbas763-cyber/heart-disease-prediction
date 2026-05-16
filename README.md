@@ -10,8 +10,8 @@ Predicting heart disease using Cleveland Dataset — KNN, Logistic Regression &a
 
 | Stage | Stages Covered | Contributor |
 |-------|---------------|-------------|
-| Stages 1–4 | Problem Definition, Data Collection, Preprocessing & EDA | **Anagha** |
-| Stages 5–8 | Feature Engineering, Model Building, Evaluation & Explainability | **Hiba Fathima** |
+| Stages 1–4 | Problem Definition, Data Collection, Preprocessing & EDA | **Anagha s** |
+| Stages 5–8 | Feature Engineering, Model Building, Evaluation & Explainability | **Hiba Fathima M** |
 | Stages 9–10 | Deployment & Documentation | **Asna Abbas** |
 
 **Course:** Predictive Analytics | Academic Year 2025–26
