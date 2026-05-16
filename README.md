@@ -101,9 +101,9 @@ Three models were trained and compared using the cleaned, scaled dataset:
 
 | Model | Accuracy | Notes |
 |-------|----------|-------|
-| 🏆 **KNN** | **90.16%** | Selected as production model |
-| Logistic Regression | 85.25% | Strong linear baseline |
-| Gradient Boosting | 77.05% | Performed below expectations on this dataset size |
+| 🏆 **KNN** | **91.88%** | Selected as production model |
+| Logistic Regression | 86.58% | Strong linear baseline |
+| Gradient Boosting | 87.23% | Performed below expectations on this dataset size |
 
 Evaluation used accuracy, precision, recall, F1-score, and confusion matrix. Decision boundary plots were generated for KNN and Logistic Regression (see `plots/`).
 
