@@ -118,8 +118,7 @@ The final KNN model (`heart_model.pkl`) and scaler (`scaler.pkl`) were serialise
 - Real-time prediction with risk classification
 - Clinical cyberpunk UI theme with animated feedback
 
-🔗 **Live App:** [https://nihalabiomed-heart-disease-prediction-app-vnrlqu.streamlit.app](https://nihalabiomed-heart-disease-prediction-app-vnrlqu.streamlit.app)
-
+🔗 **Live App:**https://heart-disease-prediction-3ycj5odppblq8pchewpxv4.streamlit.app/
 ### Stage 10 — Documentation *(Asna Abbas)*
 - Maintained structured Jupyter notebooks for all pipeline stages
 - Wrote this README
