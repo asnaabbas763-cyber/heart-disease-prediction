@@ -1,42 +1,62 @@
-# heart-disease-prediction
-Predicting heart disease using Cleveland Dataset — KNN, Logistic Regression &amp; Gradient Boosting
-# 🫀 Heart Disease Prediction Using Patient Health Data
+<div align="center">
 
-> A full Machine Learning lifecycle project — from raw clinical data to a deployed Streamlit application — for predicting cardiac risk using the Cleveland Heart Disease Dataset.
+# 🫀 Heart Disease Prediction
+
+### Predicting cardiac risk using the Cleveland Heart Disease Dataset
+### K-Nearest Neighbors · Logistic Regression · Gradient Boosting
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://heart-disease-prediction-3ycj5odppblq8pchewpxv4.streamlit.app/)
+![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange?logo=scikit-learn&logoColor=white)
+![Accuracy](https://img.shields.io/badge/Best%20Accuracy-90.16%25-brightgreen)
+![License](https://img.shields.io/badge/License-Academic-lightgrey)
+
+</div>
+
+---
+
+## 📖 Overview
+
+Cardiovascular disease is one of the leading causes of death globally, yet early detection dramatically improves patient outcomes. Traditional clinical diagnosis often relies on multiple tests and expert judgement — which may not be accessible in resource-limited settings.
+
+This project builds a **binary ML classifier** that predicts whether a patient has heart disease based on **13 clinical attributes**, enabling fast, data-driven preliminary screening. It demonstrates a complete ML pipeline — from raw data all the way to a live deployed web application.
 
 ---
 
 ## 👥 Team Members & Contributions
 
-| Stage | Stages Covered | Contributor |
-|-------|---------------|-------------|
-| Stages 1–4 | Problem Definition, Data Collection, Preprocessing & EDA | **Anagha s** |
-| Stages 5–8 | Feature Engineering, Model Building, Evaluation & Explainability | **Hiba Fathima M** |
-| Stages 9–10 | Deployment & Documentation | **Asna Abbas** |
+| Contributor | Stages | Responsibilities |
+|-------------|--------|-----------------|
+| **Anagha Suresh** | Stages 1 – 4 | Problem Definition, Data Collection, Preprocessing & EDA |
+| **Hiba Fathima M** | Stages 5 – 8 | Feature Engineering, Model Building, Evaluation & Explainability |
+| **Asna Abbas** | Stages 9 – 10 | Deployment & Documentation |
 
-**Course:** Predictive Analytics | Academic Year 2025–26
-
----
-
-## 📌 Problem Statement & Motivation
-
-Cardiovascular disease is one of the leading causes of death globally, yet early detection dramatically improves patient outcomes. Traditional clinical diagnosis often relies on multiple tests and expert judgement, which may not be accessible in resource-limited settings.
-
-This project builds a machine learning classifier that predicts whether a patient has heart disease based on 13 clinical attributes — enabling fast, data-driven preliminary screening. The goal is to demonstrate how a full ML pipeline, from raw data to deployed web app, can support clinical decision-making.
+> 📚 **Course:** Predictive Analytics &nbsp;|&nbsp; Academic Year 2025–26
 
 ---
 
-## 📂 Dataset Description
+## 🚀 Live Demo
+
+> 🔗 **[heart-disease-prediction.streamlit.app](https://heart-disease-prediction-3ycj5odppblq8pchewpxv4.streamlit.app/)**
+
+Enter patient parameters in the interactive sidebar and get a real-time cardiac risk prediction.
+
+---
+
+## 📂 Dataset
 
 | Property | Details |
 |----------|---------|
-| **Source** | [Cleveland Heart Disease Dataset](https://archive.ics.uci.edu/ml/datasets/Heart+Disease) via Kaggle |
+| **Source** | [UCI Cleveland Heart Disease Dataset](https://archive.ics.uci.edu/ml/datasets/Heart+Disease) via Kaggle |
 | **File** | `heart-disease.csv` |
-| **Rows** | 303 patient records |
+| **Records** | 303 patient records |
 | **Features** | 13 clinical attributes + 1 target variable |
-| **Class Distribution** | Heart Disease: **165 (54.5%)** · No Heart Disease: **138 (45.5%)** |
+| **Class Split** | ❤️ Heart Disease: **165 (54.5%)** &nbsp;·&nbsp; ✅ No Disease: **138 (45.5%)** |
 
-### Feature Glossary
+<details>
+<summary><b>📋 Feature Glossary (click to expand)</b></summary>
+
+<br>
 
 | Feature | Description | Type |
 |---------|-------------|------|
@@ -52,107 +72,111 @@ This project builds a machine learning classifier that predicts whether a patien
 | `oldpeak` | ST depression induced by exercise | Numerical |
 | `slope` | Slope of peak exercise ST segment | Categorical |
 | `ca` | Number of major vessels coloured by fluoroscopy (0–3) | Numerical |
-| `thal` | Thalassemia type (1 = normal, 2 = fixed defect, 3 = reversible defect) | Categorical |
-| `target` | Heart disease diagnosis (1 = disease, 0 = no disease) | **Target** |
+| `thal` | Thalassemia type (1 = normal, 2 = fixed, 3 = reversible) | Categorical |
+| `target` | Heart disease diagnosis (1 = disease, 0 = none) | **Target** |
+
+</details>
 
 ---
 
-## 🔬 Methodology — Full ML Life Cycle
+## 🔬 ML Pipeline — Full Life Cycle
 
-### Stage 1 — Problem Definition 
-Framed the problem as a binary classification task. Defined success metrics (accuracy, precision, recall, F1-score), identified the clinical domain context, and reviewed existing literature on ML-based cardiac risk prediction.
+### 🔹 Stage 1 — Problem Definition &nbsp;*(Anagha Suresh)*
+Framed the problem as a **binary classification** task. Defined success metrics (accuracy, precision, recall, F1-score), identified the clinical domain context, and reviewed existing literature on ML-based cardiac risk prediction.
 
-### Stage 2 — Data Collection & Understanding 
+### 🔹 Stage 2 — Data Collection & Understanding &nbsp;*(Anagha Suresh)*
 Sourced the Cleveland Heart Disease Dataset (303 records, 14 columns). Conducted initial profiling: data types, null counts, statistical summaries, and preliminary class balance checks.
 
-### Stage 3 — Data Preprocessing & Cleaning 
+### 🔹 Stage 3 — Data Preprocessing & Cleaning &nbsp;*(Anagha Suresh)*
 - Verified and handled missing or erroneous values
 - Standardised numerical features using `StandardScaler`
 - Encoded categorical variables appropriately
-- Performed train/test split (80/20 stratified)
-- Persisted processed splits as `data/X_train.pkl`, `data/X_test.pkl`, `data/y_train.pkl`, `data/y_test.pkl`
+- Performed **80/20 stratified train/test split**
+- Persisted processed splits as `.pkl` files under `data/`
 
-### Stage 4 — Exploratory Data Analysis 
-Conducted in `EDA.ipynb` and `EDA_cleaned.ipynb`:
-- Age distribution analysis
-- Target class distribution
-- Correlation heatmap for all 13 features
-- Boxplots to identify outliers across numerical variables
+### 🔹 Stage 4 — Exploratory Data Analysis &nbsp;*(Anagha Suresh)*
+Conducted across `EDA.ipynb` and `EDA_cleaned.ipynb`:
+- Age and target class distribution
+- Correlation heatmap across all 13 features
+- Boxplots for outlier detection in numerical variables
 - Gender and chest-pain-type breakdowns
 
-### Stage 5 — Feature Engineering & Selection 
-Applied two statistical selection methods to identify the most clinically significant features:
-- **Mutual Information** scores (captures non-linear dependencies)
-- **Chi-Square** tests (assesses categorical–target associations)
+### 🔹 Stage 5 — Feature Engineering & Selection &nbsp;*(Hiba Fathima M)*
+Applied two statistical methods to identify the most clinically significant features:
+
+| Method | Purpose |
+|--------|---------|
+| **Mutual Information** | Captures non-linear feature–target dependencies |
+| **Chi-Square Test** | Assesses categorical feature–target associations |
 
 **Top 4 selected features:**
-1. `cp` — Chest Pain Type
-2. `thalach` — Maximum Heart Rate Achieved
-3. `ca` — Number of Major Vessels
-4. `thal` — Thalassemia / Blood Flow Classification
 
-### Stage 6 — Model Building & Training 
-Three models were trained and compared using the cleaned, scaled dataset:
-- **K-Nearest Neighbors (KNN)** — tuned with optimal `k`
-- **Logistic Regression** — with L2 regularisation
-- **Gradient Boosting** — ensemble tree-based method
+| # | Feature | Clinical Meaning |
+|---|---------|-----------------|
+| 1 | `cp` | Chest Pain Type |
+| 2 | `thalach` | Maximum Heart Rate Achieved |
+| 3 | `ca` | Number of Major Vessels (fluoroscopy) |
+| 4 | `thal` | Thalassemia / Blood Flow Classification |
 
-### Stage 7 — Model Evaluation & Comparison 
+### 🔹 Stage 6 — Model Building & Training &nbsp;*(Hiba Fathima M)*
+Three models were trained and compared on the cleaned, scaled dataset:
 
-| Model | Accuracy | Notes |
-|-------|----------|-------|
-| 🏆 **KNN** | **91.88%** | Selected as production model |
-| Logistic Regression | 86.58% | Strong linear baseline |
-| Gradient Boosting | 87.23% | Performed below expectations on this dataset size |
+| Model | Approach |
+|-------|---------|
+| **K-Nearest Neighbors (KNN)** | Tuned with optimal `k` via cross-validation |
+| **Logistic Regression** | L2 regularisation |
+| **Gradient Boosting** | Ensemble tree-based method |
 
-Evaluation used accuracy, precision, recall, F1-score, and confusion matrix. Decision boundary plots were generated for KNN and Logistic Regression (see `plots/`).
+### 🔹 Stage 7 — Model Evaluation & Comparison &nbsp;*(Hiba Fathima M)*
 
-### Stage 8 — Model Interpretation & Explainability 
-- Visualised decision boundaries for KNN and Logistic Regression classifiers
-- Feature importance interpreted through Mutual Information (`plots/mutual_information.png`) and Chi-Square scores (`plots/chi_square.png`)
-- Findings documented to ensure clinical transparency of predictions
+| Model | Accuracy | Precision | Recall | F1-Score |
+|-------|----------|-----------|--------|----------|
+| 🏆 **KNN** | **90.16%** | — | — | — |
+| Logistic Regression | 85.25% | — | — | — |
+| Gradient Boosting | 77.05% | — | — | — |
 
-### Stage 9 — Deployment 
-The final KNN model (`heart_model.pkl`) and scaler (`scaler.pkl`) were serialised with `joblib` and deployed via **Streamlit**:
+> KNN was selected as the **production model** based on highest accuracy. Confusion matrices and decision boundary plots are available in `plots/`.
+
+### 🔹 Stage 8 — Model Interpretation & Explainability &nbsp;*(Hiba Fathima M)*
+- Decision boundary plots generated for KNN and Logistic Regression
+- Feature importance visualised via Mutual Information and Chi-Square scores
+- Findings documented to ensure **clinical transparency** of predictions
+
+### 🔹 Stage 9 — Deployment &nbsp;*(Asna Abbas)*
+The KNN model (`heart_model.pkl`) and scaler (`scaler.pkl`) were serialised with `joblib` and deployed via **Streamlit**:
 - Interactive sidebar for entering all 13 patient parameters
-- Real-time prediction with risk classification
+- Real-time prediction with risk classification output
 - Clinical cyberpunk UI theme with animated feedback
 
-🔗 **Live App:**https://heart-disease-prediction-3ycj5odppblq8pchewpxv4.streamlit.app/
-### Stage 10 — Documentation *(Asna Abbas)*
+### 🔹 Stage 10 — Documentation &nbsp;*(Asna Abbas)*
 - Maintained structured Jupyter notebooks for all pipeline stages
-- Wrote this README
-- Organised the GitHub repository with branches: `main`, `feature/eda`, `feature/feature-selection`, `ml-models`
+- Authored this README and project PPT
+- Organised GitHub repository with branches: `main`, `feature/eda`, `feature/feature-selection`, `ml-models`
 
 ---
 
 ## 📊 Results Summary
 
-| Metric | KNN (Production) | Logistic Regression | Gradient Boosting |
-|--------|-----------------|--------------------|--------------------|
-| Accuracy | **90.16%** | 85.25% | 77.05% |
-| Selected Features | cp, thalach, ca, thal | cp, thalach, ca, thal | cp, thalach, ca, thal |
-| Deployment | ✅ Live | — | — |
+| Metric | 🏆 KNN (Production) | Logistic Regression | Gradient Boosting |
+|--------|---------------------|--------------------|--------------------|
+| **Accuracy** | **90.16%** | 85.25% | 77.05% |
+| **Features Used** | cp, thalach, ca, thal | cp, thalach, ca, thal | cp, thalach, ca, thal |
+| **Deployed** | ✅ Live | ❌ | ❌ |
 
-The KNN classifier achieved the highest accuracy and was selected for deployment. Feature selection via Mutual Information and Chi-Square tests reduced dimensionality from 13 to 4 most predictive clinical markers without sacrificing performance.
-
----
-
+Feature selection reduced dimensionality from **13 → 4** most predictive clinical markers without sacrificing performance.
 
 ---
-
-
 
 ## 📁 Project Structure
 
 ```
-Heart-disease-prediction/
+heart-disease-prediction/
 │
 ├── app.py                              # Streamlit deployment app
-├── heart-disease.csv                   # Raw Cleveland dataset (303 rows × 14 cols)
-├── heart_model.pkl                     # Trained KNN model
-├── scaler.pkl                          # Fitted StandardScaler
-├── requirements.txt
+├── heart-disease.csv                   # Raw Cleveland dataset (303 × 14)
+├── heart_model.pkl                     # Trained KNN model (joblib)
+├── scaler.pkl                          # Fitted StandardScaler (joblib)
+├── requirements.txt                    # Python dependencies
 │
 ├── data/
 │   ├── X_train.pkl                     # Preprocessed training features
@@ -160,9 +184,9 @@ Heart-disease-prediction/
 │   ├── y_train.pkl                     # Training labels
 │   └── y_test.pkl                      # Test labels
 │
-├── EDA.ipynb                           # Exploratory Data Analysis (Anagha)
-├── EDA_cleaned.ipynb                   # Cleaned EDA with final plots (Anagha)
-├── feature_selection_and_model.ipynb   # Feature selection + model training (Hiba Fathima)
+├── EDA.ipynb                           # EDA — Anagha Suresh
+├── EDA_cleaned.ipynb                   # Cleaned EDA with plots — Anagha Suresh
+├── feature_selection_and_model.ipynb   # Feature selection + training — Hiba Fathima M
 │
 └── plots/
     ├── age_distribution.png
@@ -177,3 +201,45 @@ Heart-disease-prediction/
 
 ---
 
+## ⚙️ Run Locally
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/your-username/heart-disease-prediction.git
+cd heart-disease-prediction
+
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Launch the app
+streamlit run app.py
+```
+
+---
+
+## 📦 Dependencies
+
+```txt
+streamlit
+scikit-learn
+pandas
+numpy
+joblib
+matplotlib
+seaborn
+```
+
+---
+
+## 📜 License & Credits
+
+This project is an academic coursework submission for the **Predictive Analytics** course (2025–26).  
+Dataset: [UCI Machine Learning Repository — Heart Disease Dataset](https://archive.ics.uci.edu/ml/datasets/Heart+Disease)
+
+---
+
+<div align="center">
+
+Made with ❤️ by **Anagha Suresh**, **Hiba Fathima M**, and **Asna Abbas**
+
+</div>
