@@ -59,20 +59,20 @@ This project builds a machine learning classifier that predicts whether a patien
 
 ## 🔬 Methodology — Full ML Life Cycle
 
-### Stage 1 — Problem Definition *(Anagha)*
+### Stage 1 — Problem Definition 
 Framed the problem as a binary classification task. Defined success metrics (accuracy, precision, recall, F1-score), identified the clinical domain context, and reviewed existing literature on ML-based cardiac risk prediction.
 
-### Stage 2 — Data Collection & Understanding *(Anagha)*
+### Stage 2 — Data Collection & Understanding 
 Sourced the Cleveland Heart Disease Dataset (303 records, 14 columns). Conducted initial profiling: data types, null counts, statistical summaries, and preliminary class balance checks.
 
-### Stage 3 — Data Preprocessing & Cleaning *(Anagha)*
+### Stage 3 — Data Preprocessing & Cleaning 
 - Verified and handled missing or erroneous values
 - Standardised numerical features using `StandardScaler`
 - Encoded categorical variables appropriately
 - Performed train/test split (80/20 stratified)
 - Persisted processed splits as `data/X_train.pkl`, `data/X_test.pkl`, `data/y_train.pkl`, `data/y_test.pkl`
 
-### Stage 4 — Exploratory Data Analysis *(Anagha)*
+### Stage 4 — Exploratory Data Analysis 
 Conducted in `EDA.ipynb` and `EDA_cleaned.ipynb`:
 - Age distribution analysis
 - Target class distribution
@@ -80,7 +80,7 @@ Conducted in `EDA.ipynb` and `EDA_cleaned.ipynb`:
 - Boxplots to identify outliers across numerical variables
 - Gender and chest-pain-type breakdowns
 
-### Stage 5 — Feature Engineering & Selection *(Hiba Fathima)*
+### Stage 5 — Feature Engineering & Selection 
 Applied two statistical selection methods to identify the most clinically significant features:
 - **Mutual Information** scores (captures non-linear dependencies)
 - **Chi-Square** tests (assesses categorical–target associations)
@@ -91,13 +91,13 @@ Applied two statistical selection methods to identify the most clinically signif
 3. `ca` — Number of Major Vessels
 4. `thal` — Thalassemia / Blood Flow Classification
 
-### Stage 6 — Model Building & Training *(Hiba Fathima)*
+### Stage 6 — Model Building & Training 
 Three models were trained and compared using the cleaned, scaled dataset:
 - **K-Nearest Neighbors (KNN)** — tuned with optimal `k`
 - **Logistic Regression** — with L2 regularisation
 - **Gradient Boosting** — ensemble tree-based method
 
-### Stage 7 — Model Evaluation & Comparison *(Hiba Fathima)*
+### Stage 7 — Model Evaluation & Comparison 
 
 | Model | Accuracy | Notes |
 |-------|----------|-------|
@@ -107,7 +107,7 @@ Three models were trained and compared using the cleaned, scaled dataset:
 
 Evaluation used accuracy, precision, recall, F1-score, and confusion matrix. Decision boundary plots were generated for KNN and Logistic Regression (see `plots/`).
 
-### Stage 8 — Model Interpretation & Explainability *(Hiba Fathima)*
+### Stage 8 — Model Interpretation & Explainability 
 - Visualised decision boundaries for KNN and Logistic Regression classifiers
 - Feature importance interpreted through Mutual Information (`plots/mutual_information.png`) and Chi-Square scores (`plots/chi_square.png`)
 - Findings documented to ensure clinical transparency of predictions
