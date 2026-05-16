@@ -154,6 +154,11 @@ The KNN model (`heart_model.pkl`) and scaler (`scaler.pkl`) were serialised with
 - Organised GitHub repository with branches: `main`, `feature/eda`, `feature/feature-selection`, `ml-models`
 
 ---
+# App Screenshots
+
+<img src="Asset/app%20screenshot1.jpeg" width="250">
+<img src="Asset/app%20screenshot2.jpeg" width="250">
+<img src="Asset/app%20screenshot3.jpeg" width="250">
 
 ## 📊 Results Summary
 
